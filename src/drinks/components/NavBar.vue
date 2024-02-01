@@ -11,7 +11,7 @@ defineProps<Props>();
 
 <template>
   <header class="bg-slate-800">
-    <div class="mx-auto container px-5 py-16">
+    <div class="mx-auto container px-5 pb-16 pt-8">
       <div class="flex justify-between items-center">
         <div>
           <RouterLink :to="{ name: 'home' }">
@@ -25,6 +25,7 @@ defineProps<Props>();
             v-for="link of $props.links"
             :key="link.path"
             :to="link.path"
+            active-class="text-orange-500"
           >
             {{ link.title }}
           </RouterLink>
