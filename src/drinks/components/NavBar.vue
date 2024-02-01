@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+
 import type { RouterLink } from '@/router/list-navbar-router';
 import SearchFormVue from './SearchForm.vue';
 
@@ -7,10 +10,15 @@ interface Props {
 }
 
 defineProps<Props>();
+
+const route = useRoute();
+// Para mostrar o ocultar el banner (buscador/imagen)
+const isPageHome = computed(() => route.name === 'home');
 </script>
 
 <template>
-  <header class="bg-slate-800">
+  <!-- header es el nombre de la clase css "header" -->
+  <header class="bg-slate-800" :class="{ header: isPageHome }">
     <div class="mx-auto container px-5 pb-16 pt-8">
       <div class="flex justify-between items-center">
         <div>
@@ -32,7 +40,16 @@ defineProps<Props>();
         </nav>
       </div>
 
-      <SearchFormVue />
+      <SearchFormVue v-if="isPageHome" />
     </div>
   </header>
 </template>
+
+<style>
+.header {
+  background-image: url('/img/bg.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+</style>
