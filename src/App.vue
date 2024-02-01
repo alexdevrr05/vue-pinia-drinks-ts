@@ -4,5 +4,8 @@ import NavBar from '@/drinks/components/NavBar.vue';
 
 <template>
   <NavBar />
-</template>
 
+  <main class="container mx-auto mt-10">
+    <RouterView />
+  </main>
+</template>
