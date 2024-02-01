@@ -1,5 +1,12 @@
 <script setup lang="ts">
+import type { RouterLink } from '@/router/list-navbar-router';
 import SearchFormVue from './SearchForm.vue';
+
+interface Props {
+  links: RouterLink[];
+}
+
+defineProps<Props>();
 </script>
 
 <template>
@@ -12,7 +19,16 @@ import SearchFormVue from './SearchForm.vue';
           </RouterLink>
         </div>
 
-        <nav></nav>
+        <nav class="flex gap-4">
+          <RouterLink
+            class="text-white uppercase font-extrabold"
+            v-for="link of $props.links"
+            :key="link.path"
+            :to="link.path"
+          >
+            {{ link.title }}
+          </RouterLink>
+        </nav>
       </div>
 
       <SearchFormVue />
