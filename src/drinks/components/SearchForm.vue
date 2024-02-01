@@ -1,4 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { CategoryDrink } from '../interfaces';
+
+interface Props {
+  categories: CategoryDrink[];
+}
+
+defineProps<Props>();
+</script>
 
 <template>
   <form
@@ -24,12 +32,15 @@
         for="categoria"
         >Categoría</label
       >
-      <select
-        class="p-3 w-full rounded-lg focus:outline-none"
-        id="categoria"
-        type="text"
-      >
+      <select class="p-3 w-full rounded-lg focus:outline-none" id="categoria">
         <option value="">-- Seleccione --</option>
+        <option
+          v-for="category of categories"
+          :key="category.strCategory"
+          :value="category.strCategory"
+        >
+          {{ category.strCategory }}
+        </option>
       </select>
     </div>
 

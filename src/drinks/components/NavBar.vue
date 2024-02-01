@@ -18,7 +18,6 @@ const isPageHome = computed(() => route.name === 'home');
 
 // No destructuring para no perder la reactividad
 const store = useDrinksStore();
-console.log(store);
 </script>
 
 <template>
@@ -45,7 +44,7 @@ console.log(store);
         </nav>
       </div>
 
-      <SearchFormVue v-if="isPageHome" />
+      <SearchFormVue v-if="isPageHome" :categories="store.categories" />
     </div>
   </header>
 </template>
