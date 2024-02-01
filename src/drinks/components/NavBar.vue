@@ -2,8 +2,9 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
-import type { RouterLink } from '@/router/list-navbar-router';
+import { useDrinksStore } from '@/stores/drinks';
 import SearchFormVue from './SearchForm.vue';
+import type { RouterLink } from '@/router/list-navbar-router';
 
 interface Props {
   links: RouterLink[];
@@ -14,6 +15,10 @@ defineProps<Props>();
 const route = useRoute();
 // Para mostrar o ocultar el banner (buscador/imagen)
 const isPageHome = computed(() => route.name === 'home');
+
+// No destructuring para no perder la reactividad
+const store = useDrinksStore();
+console.log(store);
 </script>
 
 <template>
