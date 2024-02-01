@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import NavBar from '@/drinks/components/NavBar.vue';
 </script>
 
 <template>
-  <h1>From pinia</h1>
+  <NavBar />
 </template>
-
 
