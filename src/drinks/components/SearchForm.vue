@@ -3,10 +3,16 @@ import { useDrinksStore } from '@/stores/drinks';
 
 // No destructuring para no perder la reactividad
 const store = useDrinksStore();
+
+const hadleSubmit = () => {
+  // TODO: Validar
+  store.getRecipes();
+};
 </script>
 
 <template>
   <form
+    @submit.prevent="hadleSubmit"
     class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6"
   >
     <div class="space-y-4">
