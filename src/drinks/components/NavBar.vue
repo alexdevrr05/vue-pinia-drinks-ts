@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
-import { useDrinksStore } from '@/stores/drinks';
 import SearchFormVue from './SearchForm.vue';
 import type { RouterLink } from '@/router/list-navbar-router';
 
@@ -15,9 +14,6 @@ defineProps<Props>();
 const route = useRoute();
 // Para mostrar o ocultar el banner (buscador/imagen)
 const isPageHome = computed(() => route.name === 'home');
-
-// No destructuring para no perder la reactividad
-const store = useDrinksStore();
 </script>
 
 <template>
@@ -44,7 +40,7 @@ const store = useDrinksStore();
         </nav>
       </div>
 
-      <SearchFormVue v-if="isPageHome" :categories="store.categories" />
+      <SearchFormVue v-if="isPageHome" />
     </div>
   </header>
 </template>

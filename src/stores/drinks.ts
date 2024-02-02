@@ -1,4 +1,4 @@
-import { onMounted, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import { defineStore } from 'pinia';
 import axios from 'axios';
 
@@ -6,6 +6,10 @@ import type { Categories, CategoryDrink } from '@/drinks/interfaces';
 
 export const useDrinksStore = defineStore('drinks', () => {
   const categories = ref<CategoryDrink[]>([]);
+  const search = reactive({
+    name: '',
+    category: '',
+  });
 
   onMounted(async () => {
     const { data } = await axios.get<Categories>(
@@ -14,5 +18,5 @@ export const useDrinksStore = defineStore('drinks', () => {
     categories.value = data.drinks;
   });
 
-  return { categories };
+  return { categories, search };
 });

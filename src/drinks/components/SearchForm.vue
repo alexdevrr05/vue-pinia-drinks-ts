@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import type { CategoryDrink } from '../interfaces';
+import { useDrinksStore } from '@/stores/drinks';
 
-interface Props {
-  categories: CategoryDrink[];
-}
-
-defineProps<Props>();
+// No destructuring para no perder la reactividad
+const store = useDrinksStore();
 </script>
 
 <template>
@@ -23,6 +20,7 @@ defineProps<Props>();
         id="ingrediente"
         type="text"
         placeholder="Nombre o ingrediente: Tequila, Whiskey, etc"
+        v-model="store.search.name"
       />
     </div>
 
@@ -32,10 +30,14 @@ defineProps<Props>();
         for="categoria"
         >Categoría</label
       >
-      <select class="p-3 w-full rounded-lg focus:outline-none" id="categoria">
+      <select
+        class="p-3 w-full rounded-lg focus:outline-none"
+        id="categoria"
+        v-model="store.search.category"
+      >
         <option value="">-- Seleccione --</option>
         <option
-          v-for="category of categories"
+          v-for="category of store.categories"
           :key="category.strCategory"
           :value="category.strCategory"
         >
