@@ -52,6 +52,10 @@ const drinks = useDrinksStore();
                 >
                   {{ drinks.details.strDrink }}
                 </DialogTitle>
+                <img
+                  :src="drinks.details.strDrinkThumb"
+                  :alt="`Imagen de ${drinks.details.strDrink}`"
+                />
                 <p>{{ drinks.details.strInstructions }}</p>
               </div>
 

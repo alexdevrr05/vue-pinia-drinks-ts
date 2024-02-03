@@ -7,7 +7,7 @@ const store = useDrinksStore();
 
 <template>
   <h1 class="text-6xl font-extrabold">Recetas</h1>
-  <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 mt-10 gap-10">
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-10 gap-10">
     <CardRecipe
       v-for="recipe of store.recipes"
       :key="recipe.idDrink"
