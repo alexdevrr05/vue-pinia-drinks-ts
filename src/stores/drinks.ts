@@ -6,6 +6,7 @@ import drinkServices from '@/drinks/services/drinkServices';
 import type {
   Categories,
   CategoryDrink,
+  Details,
   Drink,
   Recipe,
 } from '@/drinks/interfaces';
@@ -13,6 +14,7 @@ import type {
 export const useDrinksStore = defineStore('drinks', () => {
   const categories = ref<CategoryDrink[]>([]);
   const recipes = ref<Drink[]>([]);
+  const details = ref<{ [key: string]: null | string }>({});
 
   const search = reactive({
     name: '',
@@ -33,7 +35,8 @@ export const useDrinksStore = defineStore('drinks', () => {
 
   async function selectDrink(id: string) {
     const { data } = await drinkServices.getDetailsDrinkById(id);
-    console.log('data -> ', data);
+    const responseData: Details = data;
+    details.value = responseData.drinks[0];
   }
 
   return {
@@ -41,6 +44,7 @@ export const useDrinksStore = defineStore('drinks', () => {
     categories,
     search,
     recipes,
+    details,
 
     // Methods
     getRecipes,
