@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import NavBar from '@/drinks/components/NavBar.vue';
 import { routerLinks } from '@/router/list-navbar-router';
+
+import NavBar from '@/drinks/components/NavBar.vue';
+import CustomModal from './shared/components/CustomModal.vue';
 </script>
 
 <template>
@@ -9,4 +11,6 @@ import { routerLinks } from '@/router/list-navbar-router';
   <main class="container mx-auto mt-10">
     <RouterView />
   </main>
+
+  <CustomModal />
 </template>
