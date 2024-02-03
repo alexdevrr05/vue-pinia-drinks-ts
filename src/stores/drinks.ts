@@ -7,7 +7,8 @@ import { useModalStore } from '@/stores/modal';
 import type {
   Categories,
   CategoryDrink,
-  Details,
+  DrinkApiResponse,
+  DrinkDetails,
   Drink,
   Recipe,
 } from '@/drinks/interfaces';
@@ -17,7 +18,7 @@ export const useDrinksStore = defineStore('drinks', () => {
 
   const categories = ref<CategoryDrink[]>([]);
   const recipes = ref<Drink[]>([]);
-  const details = ref<{ [key: string]: null | string }>({});
+  const details = ref<DrinkDetails>();
 
   const search = reactive({
     name: '',
@@ -38,7 +39,7 @@ export const useDrinksStore = defineStore('drinks', () => {
 
   async function selectDrink(id: string) {
     const { data } = await drinkServices.getDetailsDrinkById(id);
-    const responseData: Details = data;
+    const responseData: DrinkApiResponse = data;
     details.value = responseData.drinks[0];
     // Open/close modal
     modalStore.handleClickModal();
