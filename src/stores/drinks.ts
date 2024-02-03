@@ -2,6 +2,7 @@ import { onMounted, reactive, ref } from 'vue';
 import { defineStore } from 'pinia';
 
 import drinkServices from '@/drinks/services/drinkServices';
+import { useModalStore } from '@/stores/modal';
 
 import type {
   Categories,
@@ -12,6 +13,8 @@ import type {
 } from '@/drinks/interfaces';
 
 export const useDrinksStore = defineStore('drinks', () => {
+  const modalStore = useModalStore();
+
   const categories = ref<CategoryDrink[]>([]);
   const recipes = ref<Drink[]>([]);
   const details = ref<{ [key: string]: null | string }>({});
@@ -37,6 +40,8 @@ export const useDrinksStore = defineStore('drinks', () => {
     const { data } = await drinkServices.getDetailsDrinkById(id);
     const responseData: Details = data;
     details.value = responseData.drinks[0];
+    // Open/close modal
+    modalStore.handleClickModal();
   }
 
   return {

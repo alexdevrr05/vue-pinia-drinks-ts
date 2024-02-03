@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import {
   TransitionRoot,
   TransitionChild,
@@ -8,28 +7,14 @@ import {
   DialogTitle,
 } from '@headlessui/vue';
 
-const isOpen = ref(true);
+import { useModalStore } from '@/stores/modal';
 
-function closeModal() {
-  isOpen.value = false;
-}
-function openModal() {
-  isOpen.value = true;
-}
+const store = useModalStore();
 </script>
 
 <template>
-  <div class="fixed inset-0 flex items-center justify-center">
-    <button
-      type="button"
-      @click="openModal"
-      class="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
-    >
-      Open dialog
-    </button>
-  </div>
-  <TransitionRoot appear :show="isOpen" as="template">
-    <Dialog as="div" @close="closeModal" class="relative z-10">
+  <TransitionRoot appear :show="store.modal" as="template">
+    <Dialog as="div" @close="store.handleClickModal" class="relative z-10">
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
@@ -74,10 +59,10 @@ function openModal() {
               <div class="mt-4">
                 <button
                   type="button"
-                  class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                  @click="closeModal"
+                  class="w-full text-white uppercase bg-gray-600 hover:bg-gray-500 shadow rounded p-3"
+                  @click="store.handleClickModal"
                 >
-                  Got it, thanks!
+                  Cerrar
                 </button>
               </div>
             </DialogPanel>
