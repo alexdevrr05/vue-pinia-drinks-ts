@@ -31,6 +31,11 @@ export const useDrinksStore = defineStore('drinks', () => {
     recipes.value = responseData.drinks;
   }
 
+  async function selectDrink(id: string) {
+    const { data } = await drinkServices.getDetailsDrinkById(id);
+    console.log('data -> ', data);
+  }
+
   return {
     // Properties
     categories,
@@ -39,6 +44,7 @@ export const useDrinksStore = defineStore('drinks', () => {
 
     // Methods
     getRecipes,
+    selectDrink,
 
     // Getters
   };

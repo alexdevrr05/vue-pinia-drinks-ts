@@ -13,4 +13,8 @@ export default {
   searchRecibes({ category, name }: FormSearch) {
     return drinkDB.get(`/filter.php?c=${category}&i=${name}`);
   },
+
+  getDetailsDrinkById(id: string) {
+    return drinkDB.get(`/lookup.php?i=${id}`);
+  },
 };
