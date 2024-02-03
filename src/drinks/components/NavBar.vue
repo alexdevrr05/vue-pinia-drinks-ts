@@ -33,7 +33,6 @@ const isPageHome = computed(() => route.name === 'home');
             v-for="link of $props.links"
             :key="link.path"
             :to="link.path"
-            active-class="text-orange-500"
           >
             {{ link.title }}
           </RouterLink>
