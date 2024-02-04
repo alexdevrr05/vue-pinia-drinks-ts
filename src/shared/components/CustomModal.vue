@@ -117,7 +117,7 @@ const ingredientsFormat = () => {
                   type="button"
                   class="w-full text-white uppercase bg-orange-600 hover:bg-orange-500 shadow rounded p-2 font-semibold"
                 >
-                  Agregar a favoritos
+                  {{ modal.txtButton }}
                 </button>
               </div>
             </DialogPanel>

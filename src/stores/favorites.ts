@@ -8,7 +8,7 @@ export const useFavoritesStore = defineStore('favorites', () => {
   const favorites = ref<DrinkDetails[]>([]);
 
   onMounted(() => {
-    favorites.value = JSON.parse(localStorage.getItem('favorites') || '');
+    favorites.value = JSON.parse(localStorage.getItem('favorites') || '[]');
   });
 
   watch(
@@ -21,18 +21,42 @@ export const useFavoritesStore = defineStore('favorites', () => {
     }
   );
 
-  const localStorageSyncronize = () => {
+  function localStorageSyncronize() {
     localStorage.setItem('favorites', JSON.stringify(favorites.value));
-  };
+  }
 
-  const handleClickFavorite = () => {
+  function isFavoriteDrink() {
+    const favoritesLocalStorage = JSON.parse(
+      localStorage.getItem('favorites') || '[]'
+    );
+
+    return favoritesLocalStorage.some(
+      (drink: DrinkDetails) => drink.idDrink === drinksStore.details!.idDrink
+    );
+  }
+
+  function handleClickDelete() {
+    const updatedFavorites = favorites.value.filter(
+      (drink: DrinkDetails) => drink.idDrink !== drinksStore.details!.idDrink
+    );
+    favorites.value = updatedFavorites;
+  }
+
+  function addDrinkToFavorites() {
     if (drinksStore.details) {
       favorites.value.push(drinksStore.details);
     }
-  };
+  }
+
+  function handleClickFavorite() {
+    if (isFavoriteDrink()) return handleClickDelete();
+
+    addDrinkToFavorites();
+  }
 
   return {
     favorites,
     handleClickFavorite,
+    isFavoriteDrink,
   };
 });
