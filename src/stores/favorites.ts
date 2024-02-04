@@ -1,10 +1,12 @@
 import { onMounted, ref, watch } from 'vue';
 import { defineStore } from 'pinia';
 import { useDrinksStore } from './drinks';
+import { useModalStore } from './modal';
 import type { DrinkDetails } from '@/drinks/interfaces';
 
 export const useFavoritesStore = defineStore('favorites', () => {
   const drinksStore = useDrinksStore();
+  const modalStore = useModalStore();
   const favorites = ref<DrinkDetails[]>([]);
 
   onMounted(() => {
@@ -49,9 +51,13 @@ export const useFavoritesStore = defineStore('favorites', () => {
   }
 
   function handleClickFavorite() {
-    if (isFavoriteDrink()) return handleClickDelete();
-
-    addDrinkToFavorites();
+    if (isFavoriteDrink()) {
+      handleClickDelete();
+    } else {
+      addDrinkToFavorites();
+    }
+    // close modal
+    modalStore.modal = false;
   }
 
   return {
