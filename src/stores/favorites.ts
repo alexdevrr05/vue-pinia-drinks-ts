@@ -1,4 +1,4 @@
-import { onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { defineStore } from 'pinia';
 import { useDrinksStore } from './drinks';
 import { useModalStore } from './modal';
@@ -61,7 +61,13 @@ export const useFavoritesStore = defineStore('favorites', () => {
   }
 
   return {
+    // State
     favorites,
+
+    // Getters
+    noFavorites: computed(() => favorites.value.length === 0),
+
+    // Actions
     handleClickFavorite,
     isFavoriteDrink,
   };
