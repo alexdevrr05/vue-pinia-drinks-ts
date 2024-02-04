@@ -1,4 +1,4 @@
-import { onMounted, reactive, ref } from 'vue';
+import { computed, onMounted, reactive, ref } from 'vue';
 import { defineStore } from 'pinia';
 
 import drinkServices from '@/drinks/services/drinkServices';
@@ -52,10 +52,11 @@ export const useDrinksStore = defineStore('drinks', () => {
     recipes,
     details,
 
+    // Getters
+    noRecipes: computed(() => recipes.value.length === 0),
+
     // Methods
     getRecipes,
     selectDrink,
-
-    // Getters
   };
 });
