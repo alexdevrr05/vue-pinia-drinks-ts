@@ -27,12 +27,13 @@ const isPageHome = computed(() => route.name === 'home');
           </RouterLink>
         </div>
 
-        <nav class="flex gap-4">
+        <nav class="flex gap-4 text-white">
           <RouterLink
-            class="text-white uppercase font-extrabold"
+            class="uppercase font-extrabold"
             v-for="link of $props.links"
             :key="link.path"
             :to="link.path"
+            activeClass="text-orange-500"
           >
             {{ link.title }}
           </RouterLink>
