@@ -9,9 +9,11 @@ import {
 
 import { useModalStore } from '@/stores/modal';
 import { useDrinksStore } from '@/stores/drinks';
+import { useFavoritesStore } from '@/stores/favorites';
 
 const modal = useModalStore();
 const drinks = useDrinksStore();
+const favorites = useFavoritesStore();
 
 const ingredientsFormat = () => {
   const ingredientsDiv = document.createElement('div');
@@ -62,7 +64,7 @@ const ingredientsFormat = () => {
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+              class="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
             >
               <div>
                 <div class="mt-3">
@@ -104,15 +106,16 @@ const ingredientsFormat = () => {
               <div class="flex mt-5 justify-between gap-3">
                 <button
                   type="button"
-                  class="w-full text-white uppercase bg-gray-600 hover:bg-gray-500 shadow rounded p-2"
+                  class="w-full text-white uppercase bg-gray-600 hover:bg-gray-500 shadow rounded p-2 font-semibold"
                   @click="modal.handleClickModal"
                 >
                   Cerrar
                 </button>
 
                 <button
+                  @click="favorites.handleClickFavorite"
                   type="button"
-                  class="w-full text-white uppercase bg-orange-600 hover:bg-orange-500 shadow rounded p-2"
+                  class="w-full text-white uppercase bg-orange-600 hover:bg-orange-500 shadow rounded p-2 font-semibold"
                 >
                   Agregar a favoritos
                 </button>
