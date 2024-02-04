@@ -17,7 +17,7 @@ const hadleSubmit = () => {
   >
     <div class="space-y-4">
       <label
-        class="block text-white uppercase font-extrabold text-lg"
+        class="block text-[#1e293b] uppercase font-extrabold text-lg"
         for="ingrediente"
         >Nombre o ingrediente</label
       >
@@ -32,7 +32,7 @@ const hadleSubmit = () => {
 
     <div class="space-y-4">
       <label
-        class="block text-white uppercase font-extrabold text-lg"
+        class="block text-[#1e293b] uppercase font-extrabold text-lg"
         for="categoria"
         >Categoría</label
       >

@@ -23,7 +23,13 @@ const isPageHome = computed(() => route.name === 'home');
       <div class="flex justify-between items-center">
         <div>
           <RouterLink :to="{ name: 'home' }">
-            <img class="w-32" src="/img/logo.svg" alt="Logotipo" />
+            <img
+              width="8rem"
+              height="8rem"
+              class="w-32"
+              src="/img/logo.svg"
+              alt="Logotipo"
+            />
           </RouterLink>
         </div>
 
@@ -48,9 +54,10 @@ const isPageHome = computed(() => route.name === 'home');
   </header>
 </template>
 
+<!-- background-image: url('/img/bg.webp'); -->
 <style>
 .header {
-  background-image: url('/img/bg.webp');
+  background-image: url('/img/bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
