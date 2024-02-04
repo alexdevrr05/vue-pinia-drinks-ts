@@ -8,9 +8,12 @@ const favoritesStore = useFavoritesStore();
 <template>
   <div class="mx-4 sm:mx-0">
     <h1 class="text-5xl font-extrabold">Favoritos</h1>
-    <span v-if="favoritesStore.noFavorites" class="text-xl font-semibold mt-2">
+    <p
+      v-if="favoritesStore.noFavorites"
+      class="text-xl text-center font-semibold mt-10"
+    >
       Comienza agregando las bebidas de tu agrado
-    </span>
+    </p>
 
     <div
       v-else
