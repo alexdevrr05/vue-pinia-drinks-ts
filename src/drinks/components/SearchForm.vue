@@ -1,11 +1,23 @@
 <script setup lang="ts">
 import { useDrinksStore } from '@/stores/drinks';
+import { useNotificationsStrore } from '@/stores/notifications';
 
 // No destructuring para no perder la reactividad
 const store = useDrinksStore();
+const notifications = useNotificationsStrore();
 
 const hadleSubmit = () => {
   // TODO: Validar
+
+  // If either of the two params is empty
+  if (Object.values(store.search).includes('')) {
+    notifications.text = 'Todos los campos son obligatorios';
+    notifications.error = true;
+    notifications.show = true;
+
+    return;
+  }
+
   store.getRecipes();
 };
 </script>
