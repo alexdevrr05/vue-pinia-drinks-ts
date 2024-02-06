@@ -106,7 +106,7 @@ const ingredientsFormat = () => {
               <div class="flex mt-5 justify-between gap-3">
                 <button
                   type="button"
-                  class="w-full text-white uppercase bg-gray-600 hover:bg-gray-500 shadow rounded p-2 font-semibold"
+                  class="w-full text-white uppercase bg-quaternary hover:bg-quaternary/90 shadow rounded p-2 font-semibold"
                   @click="modal.handleClickModal"
                 >
                   Cerrar
@@ -115,7 +115,7 @@ const ingredientsFormat = () => {
                 <button
                   @click="favorites.handleClickFavorite"
                   type="button"
-                  class="w-full text-white uppercase bg-orange-600 hover:bg-orange-500 shadow rounded p-2 font-semibold"
+                  class="w-full text-white uppercase bg-secondary hover:bg-secondary/90 shadow rounded p-2 font-semibold"
                 >
                   {{ modal.txtButton }}
                 </button>

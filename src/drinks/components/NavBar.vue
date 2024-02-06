@@ -18,7 +18,7 @@ const isPageHome = computed(() => route.name === 'home');
 
 <template>
   <!-- header es el nombre de la clase css "header" -->
-  <header class="bg-slate-800" :class="{ header: isPageHome }">
+  <header class="bg-quaternary" :class="{ header: isPageHome }">
     <div class="mx-auto container px-5 pb-16 pt-8">
       <div class="flex justify-between items-center">
         <div>
@@ -27,7 +27,7 @@ const isPageHome = computed(() => route.name === 'home');
               width="8rem"
               height="8rem"
               class="w-32"
-              src="/img/logo.svg"
+              src="/img/vue-cocktail.svg"
               alt="Logotipo"
             />
           </RouterLink>
@@ -42,7 +42,7 @@ const isPageHome = computed(() => route.name === 'home');
             v-for="link of $props.links"
             :key="link.path"
             :to="link.path"
-            active-class="text-orange-500"
+            active-class="text-primary"
           >
             {{ link.title }}
           </RouterLink>
@@ -54,10 +54,9 @@ const isPageHome = computed(() => route.name === 'home');
   </header>
 </template>
 
-<!-- background-image: url('/img/bg.webp'); -->
 <style>
 .header {
-  background-image: url('/img/bg.jpg');
+  background-image: url('/img/bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

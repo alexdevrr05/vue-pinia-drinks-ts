@@ -27,7 +27,7 @@ defineProps<Props>();
       </h2>
       <button
         type="button"
-        class="bg-orange-400 hover:bg-orange-500 transition-colors mt-5 w-full p-3 font-bold text-white text-lg"
+        class="bg-primary hover:bg-primary/90 transition-colors mt-5 w-full p-3 font-bold text-white text-lg"
         @click="store.selectDrink($props.recipe.idDrink)"
       >
         Ver receta

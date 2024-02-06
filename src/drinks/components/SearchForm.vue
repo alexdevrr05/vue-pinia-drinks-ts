@@ -13,11 +13,11 @@ const hadleSubmit = () => {
 <template>
   <form
     @submit.prevent="hadleSubmit"
-    class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6"
+    class="md:w-1/2 2xl:w-1/3 bg-primary my-32 p-10 rounded-lg shadow space-y-6"
   >
     <div class="space-y-4">
       <label
-        class="block text-[#1e293b] uppercase font-extrabold text-lg"
+        class="block text-white uppercase font-extrabold text-lg"
         for="ingrediente"
         >Nombre o ingrediente</label
       >
@@ -32,7 +32,7 @@ const hadleSubmit = () => {
 
     <div class="space-y-4">
       <label
-        class="block text-[#1e293b] uppercase font-extrabold text-lg"
+        class="block text-white uppercase font-extrabold text-lg"
         for="categoria"
         >Categoría</label
       >
@@ -54,7 +54,7 @@ const hadleSubmit = () => {
 
     <input
       type="submit"
-      class="bg-orange-800 hover:bg-orange-900 cursor-pointer text-white font-extrabold uppercase w-full rounded-lg p-2"
+      class="bg-secondary hover:bg-secondary/90 cursor-pointer text-white font-extrabold uppercase w-full rounded-lg p-2 transition-colors"
       value="Buscar recetas"
     />
   </form>
